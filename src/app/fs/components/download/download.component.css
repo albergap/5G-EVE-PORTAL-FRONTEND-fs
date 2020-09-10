@@ -1,0 +1,8 @@
+mat-list {
+  overflow: auto;
+  max-height: 700px;
+}
+
+form {
+  text-align: center;
+}

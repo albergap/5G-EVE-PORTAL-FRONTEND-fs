@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span>{{title}} | {{user.email}}</span>
+</mat-toolbar>
+
+<mat-tab-group (selectedIndexChange)="tabChange($event)" mat-align-tabs="center">
+  <mat-tab label="{{tabs[1]}}" layout-align="center center">
+    <mat-card class="card card-big">
+      <fs-download *ngIf="loadTabDownload"></fs-download>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="{{tabs[0]}}" layout-align="center center">
+    <mat-card class="card card-small">
+      <fs-upload *ngIf="loadTabUpload"></fs-upload>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

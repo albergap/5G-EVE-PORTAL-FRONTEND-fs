@@ -1,0 +1,11 @@
+#div_loading {
+  text-align: center;
+  padding: 6px;
+  width: min-content;
+  margin: 0 auto;
+}
+
+#div_loading > mat-spinner {
+  margin: 10px auto;
+  text-align: center;
+}

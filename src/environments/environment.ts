@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlRBACLogin: 'http://localhost:8090/portal/catalogue/login',
+  urlFSUpload: '/fs/upload',
+  urlFSDownload: '/fs/download',
+  urlFSList: '/fs/list'
 };
 
 /*

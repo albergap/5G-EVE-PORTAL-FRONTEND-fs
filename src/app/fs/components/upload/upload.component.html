@@ -1,0 +1,31 @@
+<form [formGroup]="formUpload" (ngSubmit)="submit()" (keydown.enter)="$event.preventDefault()">
+
+  <input #inputFile hidden formControlName="file" (change)="onFileChange($event)" type="file">
+  <button mat-raised-button color="primary" (click)="inputFile.click()" type="button">Choose file</button>&nbsp;
+  <mat-card *ngIf="fileS.length>0">{{fileS}}</mat-card>
+  <br><br>
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-label>Sites</mat-label>
+    <input matInput formControlName="site" placeholder="Type one and press enter" (keyup.enter)="newSite()">
+  </mat-form-field>
+  <br>
+  <mat-form-field *ngIf="sites.length>0">
+    <mat-chip-list>
+      <mat-chip *ngFor="let s of sites; index as i;">
+        {{s}}
+        <mat-icon matChipRemove (click)="removeSite(i)">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+  </mat-form-field>
+  <br>
+
+  <button mat-raised-button color="primary" [disabled]="formUpload.invalid" type="submit">Upload</button>
+
+</form>

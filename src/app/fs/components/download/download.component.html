@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="download()">
+  <mat-form-field>
+    <mat-label>File</mat-label>
+    <input matInput formControlName="name" readonly="readonly">
+  </mat-form-field>&nbsp;
+  <button mat-raised-button color="primary" [disabled]="form.invalid">Download</button>
+</form>
+
+<fs-progress-load *ngIf="loadingDownloadList" [text]="'Loading file list...'"></fs-progress-load>
+<mat-list>
+  <mat-list-item *ngFor="let f of files" (click)="clickFile(f)">
+    <mat-icon mat-list-icon>note</mat-icon>
+    <div mat-line>{{f}}</div>
+    <div mat-line> {{f}} TODO</div>
+  </mat-list-item>
+</mat-list>
