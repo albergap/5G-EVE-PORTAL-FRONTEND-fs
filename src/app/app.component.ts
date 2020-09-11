@@ -1,4 +1,3 @@
-import { ErrorDialogComponent } from './fs/components/error-dialog/error-dialog.component';
 import { Component, OnInit } from '@angular/core';
 
 import { User } from './fs/model/user';
@@ -6,6 +5,8 @@ import { User } from './fs/model/user';
 import { RBACService } from './fs/services/rbac.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+
+import { ErrorDialogComponent } from './fs/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-root',

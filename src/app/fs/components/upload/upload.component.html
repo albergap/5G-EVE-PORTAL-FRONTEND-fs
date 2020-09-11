@@ -2,7 +2,7 @@
 
   <input #inputFile hidden formControlName="file" (change)="onFileChange($event)" type="file">
   <button mat-raised-button color="primary" (click)="inputFile.click()" type="button">Choose file</button>&nbsp;
-  <mat-card *ngIf="fileS.length>0">{{fileS}}</mat-card>
+  <mat-card *ngIf="fileUser.length>0">{{fileUser}}</mat-card>
   <br><br>
 
   <mat-form-field>

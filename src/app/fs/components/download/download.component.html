@@ -3,14 +3,15 @@
     <mat-label>File</mat-label>
     <input matInput formControlName="name" readonly="readonly">
   </mat-form-field>&nbsp;
-  <button mat-raised-button color="primary" [disabled]="form.invalid">Download</button>
+  <button mat-raised-button color="primary" [disabled]="form.invalid || downloading">Download</button>
 </form>
+<mat-progress-bar mode="indeterminate" *ngIf="downloading"></mat-progress-bar>
 
-<fs-progress-load *ngIf="loadingDownloadList" [text]="'Loading file list...'"></fs-progress-load>
+<fs-progress-load *ngIf="loadingList" [text]="'Loading file list...'"></fs-progress-load>
 <mat-list>
-  <mat-list-item *ngFor="let f of files" (click)="clickFile(f)">
+  <mat-list-item *ngFor="let f of files" (click)="clickListFile(f)">
     <mat-icon mat-list-icon>note</mat-icon>
     <div mat-line>{{f}}</div>
-    <div mat-line> {{f}} TODO</div>
+    <!--<div mat-line> {{f}} TODO</div>-->
   </mat-list-item>
 </mat-list>

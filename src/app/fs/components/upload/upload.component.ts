@@ -9,12 +9,12 @@ import { UploadService } from './../../services/upload.service';
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css', '../../../style.css']
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent {
 
   formUpload: FormGroup;
 
   file: File;
-  fileS = '';
+  fileUser = '';
   sites: string[] = [];
 
   constructor(fBuilder: FormBuilder, private apiFS: UploadService) {
@@ -22,11 +22,7 @@ export class UploadComponent implements OnInit {
       file: [null, Validators.required],
       name: ['', Validators.required],
       site: ['']
-    }
-    );
-  }
-
-  ngOnInit(): void {
+    });
   }
 
   newSite(): void {
@@ -41,7 +37,7 @@ export class UploadComponent implements OnInit {
 
   onFileChange(event): void {
     this.file = event.target.files[0];
-    this.fileS = '' + this.file.name;
+    this.fileUser = '' + this.file.name;
   }
 
   submit(): void {

@@ -15,19 +15,19 @@ export class FsComponent {
 
   tabs: string[] = ['Upload', 'Download'];
   // Booleans for lazy (and only one time) tab loading
-  loadTabUpload = false;
-  loadTabDownload = true;
+  loadTabUpload = true;
+  loadTabDownload = false;
 
   constructor() { }
 
   tabChange(index: number): void {
     switch (index) {
-      case 1:
+      case 0:
         if (!this.loadTabUpload) {
           this.loadTabUpload = true;
         }
         break;
-      case 0:
+      case 1:
         if (!this.loadTabDownload) {
           this.loadTabDownload = true;
         }

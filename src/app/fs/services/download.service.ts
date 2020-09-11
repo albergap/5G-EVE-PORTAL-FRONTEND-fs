@@ -15,13 +15,14 @@ export class DownloadService {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       Authorization: 'Bearer ' + localStorage.getItem('token')
-    })
+    }),
+    responseType: 'text' as 'json'
   };
 
   constructor(private http: HttpClient) { }
 
-  download(fileName: string): Observable<string> {
-    return this.http.get<string>(environment.urlFSDownload + '/' + fileName, this.httpOptions);
+  download(fileName: string): Observable<ArrayBuffer> {
+    return this.http.get<ArrayBuffer>(environment.urlFSDownload + '/' + fileName, this.httpOptions);
   }
 
 }
