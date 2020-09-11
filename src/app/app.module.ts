@@ -26,6 +26,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatListModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   entryComponents: [ErrorDialogComponent],
   providers: [],

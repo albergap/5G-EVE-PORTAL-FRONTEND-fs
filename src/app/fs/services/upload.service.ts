@@ -11,12 +11,17 @@ import { environment } from '../../../environments/environment';
 export class UploadService {
 
   // TODO
-  httpOptions = { headers: new HttpHeaders({ Authorization: 'Bearer ' + localStorage.getItem('token') }) };
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'Bearer ' + localStorage.getItem('token')
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
   upload(formData: FormData): Observable<void> {
-    return this.http.post<any>(environment.urlFSUpload, formData, this.httpOptions);
+    return this.http.post<void>(environment.urlFSUpload, formData, this.httpOptions);
   }
 
 }

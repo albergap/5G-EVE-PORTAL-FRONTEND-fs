@@ -7,7 +7,6 @@ import { ListService } from './../../services/list.service';
 import { DownloadService } from './../../services/download.service';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({

@@ -1,4 +1,4 @@
-<form [formGroup]="formUpload" (ngSubmit)="submit()" (keydown.enter)="$event.preventDefault()">
+<form [formGroup]="form" (ngSubmit)="upload()" (keydown.enter)="$event.preventDefault()">
 
   <input #inputFile hidden formControlName="file" (change)="onFileChange($event)" type="file">
   <button mat-raised-button color="primary" (click)="inputFile.click()" type="button">Choose file</button>&nbsp;
@@ -26,6 +26,7 @@
   </mat-form-field>
   <br>
 
-  <button mat-raised-button color="primary" [disabled]="formUpload.invalid" type="submit">Upload</button>
+  <button mat-raised-button color="primary" [disabled]="form.invalid || uploading" type="submit">Upload</button>
+  <mat-progress-bar mode="indeterminate" *ngIf="uploading"></mat-progress-bar>
 
 </form>

@@ -2,3 +2,7 @@ mat-card {
   width: min-content;
   display: inline;
 }
+
+mat-progress-bar {
+  margin-top: 10px;
+}
