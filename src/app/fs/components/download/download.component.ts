@@ -22,12 +22,11 @@ export class DownloadComponent implements OnInit {
   loadingList: boolean;
   downloading: boolean;
 
-  constructor(fBuilder: FormBuilder, private listService: ListService,
+  constructor(private fBuilder: FormBuilder, private listService: ListService,
     private downloadService: DownloadService, private dialog: MatDialog) {
     this.form = fBuilder.group({
       name: ['', Validators.required]
-    }
-    );
+    });
   }
 
   loadList(): void {

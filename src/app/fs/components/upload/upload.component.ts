@@ -24,7 +24,7 @@ export class UploadComponent {
 
   uploading: boolean;
 
-  constructor(fBuilder: FormBuilder, private apiFS: UploadService,
+  constructor(private fBuilder: FormBuilder, private apiFS: UploadService,
     private dialog: MatDialog, private snackBar: MatSnackBar) {
     this.reset();
     this.form = fBuilder.group({

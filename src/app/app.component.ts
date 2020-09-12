@@ -25,14 +25,15 @@ export class AppComponent {
 
   user: User;
 
-  // TODO
+  // TODO debug
   users: User[];
   clickUser(u: User): void {
     this.user = u;
     this.logIn();
   }
 
-  constructor(private fBuilder: FormBuilder, private apiRBAC: RBACService, private dialog: MatDialog) {
+  constructor(private fBuilder: FormBuilder,
+    private apiRBAC: RBACService, private dialog: MatDialog) {
     this.loged = false;
     this.user = new User('', '');
     this.form = fBuilder.group({
@@ -40,12 +41,12 @@ export class AppComponent {
       password: ['', Validators.required]
     });
 
-    // TODO
+    // TODO debug
     this.users = [
       new User('user@mail.com', 'pass'),
       new User('admin@mail.com', 'admin')
     ];
-    this.user = this.users[0]
+    this.user = this.users[0];
     this.logIn();
   }
 
