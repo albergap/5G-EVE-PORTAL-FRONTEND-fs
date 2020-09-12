@@ -82,6 +82,12 @@ export class UploadComponent {
   }
 
   uploadError(error: HttpErrorResponse): void {
+    let message = 'Status:' + error.status + ', ' + error.message;
+    let button = 'Retry';
+    if (error.status === 409) {// Conflict
+      message = `"${this.form.get('name').value}" already exits`;
+      button = '';
+    }
     this.uploading = false;
 
     const dialogConfig = new MatDialogConfig();
@@ -89,8 +95,8 @@ export class UploadComponent {
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
       title: 'Error uploading the file',
-      text: 'Status:' + error.status + ', ' + error.message,
-      buttonText: 'Retry'
+      text: message,
+      buttonText: button
     };
 
     const dialog = this.dialog.open(ErrorDialogComponent, dialogConfig);

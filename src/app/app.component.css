@@ -1,10 +1,10 @@
-.card {
+.card-app {
   margin: 10px auto;
   padding: 30px;
   max-width: 400px;
   text-align: center;
 }
 
-mat-form-field {
+.card-app mat-form-field {
   width: 100%;
 }

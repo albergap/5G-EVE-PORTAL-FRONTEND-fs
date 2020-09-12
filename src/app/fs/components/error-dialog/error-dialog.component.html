@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{data.title}}</h1>
 <div mat-dialog-content>{{data.text}}</div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close="{{data.buttonText}}">{{data.buttonText}}</button>
   <button mat-button mat-dialog-close="'cancel'">Cancel</button>
+  <button mat-button *ngIf="!data.buttonText || data.buttonText === 0" mat-dialog-close="{{data.buttonText}}">{{data.buttonText}}</button>
 </div>
