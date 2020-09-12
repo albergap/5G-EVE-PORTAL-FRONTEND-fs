@@ -2,6 +2,9 @@
   <mat-form-field>
     <mat-label>File</mat-label>
     <input matInput formControlName="name" readonly="readonly">
+    <mat-error *ngIf="form.get('name').hasError('required')">
+      File is <strong>required</strong>
+    </mat-error>
   </mat-form-field>&nbsp;
   <button mat-raised-button color="primary" [disabled]="form.invalid || downloading">Download</button>
 </form>

@@ -26,14 +26,18 @@ export class UploadComponent {
 
   constructor(fBuilder: FormBuilder, private apiFS: UploadService,
     private dialog: MatDialog, private snackBar: MatSnackBar) {
-    this.file = null;
-    this.fileUser = '';
-    this.sites = [];
+    this.reset();
     this.form = fBuilder.group({
       file: [null, Validators.required],
       name: ['', Validators.required],
       site: ['']
     });
+  }
+
+  reset(): void {
+    this.file = null;
+    this.fileUser = '';
+    this.sites = [];
   }
 
   newSite(): void {
@@ -72,13 +76,9 @@ export class UploadComponent {
     this.uploading = false;
 
     this.form.reset();
-    this.file = null;
-    this.fileUser = '';
-    this.sites = [];
+    this.reset();
 
-    this.snackBar.open('Uploaded correctly', null, {
-      duration: 2000,
-    });
+    this.snackBar.open('Uploaded correctly', null, { duration: 2000 });
   }
 
   uploadError(error: HttpErrorResponse): void {

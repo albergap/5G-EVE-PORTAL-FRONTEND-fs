@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { User } from './fs/model/user';
 
@@ -13,23 +14,44 @@ import { ErrorDialogComponent } from './fs/components/error-dialog/error-dialog.
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css', './style.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'Welcome to FS component';
+
+  form: FormGroup;
 
   logging: boolean;
   loged: boolean;
 
   user: User;
 
-  constructor(private apiRBAC: RBACService, private dialog: MatDialog) {
-    this.loged = false;
-    // Login param
-    this.user = new User('user@mail.com', 'pass');
-    // this.user = new User('admin@mail.com', 'admin');
+  // TODO
+  users: User[];
+  clickUser(u: User): void {
+    this.user = u;
+    this.logIn();
   }
 
-  ngOnInit(): void {
+  constructor(private fBuilder: FormBuilder, private apiRBAC: RBACService, private dialog: MatDialog) {
+    this.loged = false;
+    this.user = new User('', '');
+    this.form = fBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+
+    // TODO
+    this.users = [
+      new User('user@mail.com', 'pass'),
+      new User('admin@mail.com', 'admin')
+    ];
+    this.user = this.users[0]
+    this.logIn();
+  }
+
+  submit(): void {
+    this.user.email = this.form.get('email').value;
+    this.user.password = this.form.get('password').value;
     this.logIn();
   }
 

@@ -1,7 +1,40 @@
-<mat-toolbar color="primary" *ngIf="!loged">
-  <span>{{title}}</span>
-</mat-toolbar>
+<ng-container *ngIf="!loged">
+  <mat-toolbar color="primary">
+    <span>{{title}}</span>
+  </mat-toolbar>
 
-<fs-progress-load [text]="'Logging in...'" *ngIf="logging"></fs-progress-load>
+  <mat-card class="card">
+    <mat-list>
+      <!--TODO-->
+      <mat-list-item *ngFor="let u of users" (click)="clickUser(u)">
+        <div mat-line>{{u.email}}</div>
+        <div mat-line>{{u.password}}</div>
+      </mat-list-item>
+    </mat-list>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" [value]="user.email">
+        <mat-error *ngIf="form.get('email').hasError('email')">
+          Please enter a <strong>valid</strong> email address
+        </mat-error>
+        <mat-error *ngIf="form.get('email').hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field><br>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" [value]="user.password">
+        <mat-error *ngIf="form.get('password').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field><br>
+      <button mat-raised-button color="primary" [disabled]="form.invalid || logging">Log in</button>
+    </form>
+
+    <fs-progress-load [text]="'Logging in...'" *ngIf="logging"></fs-progress-load>
+  </mat-card>
+</ng-container>
 
 <fs *ngIf="loged" [user]="user"></fs>
