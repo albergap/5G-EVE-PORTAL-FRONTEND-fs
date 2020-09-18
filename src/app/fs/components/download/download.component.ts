@@ -83,7 +83,7 @@ export class DownloadComponent implements OnInit {
   downloaded(file: string): void {
     this.downloading = false;
     console.log('Downloaded:' + file);
-    // TODO
+    // TODO download file
   }
 
   downloadError(error: HttpErrorResponse): void {

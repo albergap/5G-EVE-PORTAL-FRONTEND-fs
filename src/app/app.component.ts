@@ -25,7 +25,7 @@ export class AppComponent {
 
   user: User;
 
-  // TODO debug
+  // TODO debug login
   users: User[];
   clickUser(u: User): void {
     this.user = u;
@@ -41,7 +41,7 @@ export class AppComponent {
       password: ['', Validators.required]
     });
 
-    // TODO debug
+    // TODO debug login
     this.users = [
       new User('user@mail.com', 'pass'),
       new User('admin@mail.com', 'admin')
